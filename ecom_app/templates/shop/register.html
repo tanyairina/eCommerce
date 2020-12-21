@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">   
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static 'shop/style.css' %}">    
+    <title>Login/Registration</title>
+</head>
+<body>
+    <div class="container">
+      <h1 class="c-heading-2 x-weight-semibold ow-mb-3  no-padding ow-slide-in ow-slide-in-1 ow-theme-onedrive ow-theme-cl ow-headinghelper-1">eCommerce</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="home">Home</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                      <ul class="navbar-nav">
+                        <li class="nav-item active">
+                          <a class="nav-link" href="home">Customer Service <span class="sr-only"></span></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="profile">Your Account</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="register">Register</a>
+                          </li>
+                        <li class="nav-item">
+                            <button id="cart" data-html="true" type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="">Cart(0)</button>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="emptycart">empty your cart</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </nav>
+            </div>
+        </div>
+    <div id='wrap'>
+        {% if messages %}
+        <div id='errors'>
+        <ul class="alert-danger" role="alert">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        </div>
+        {% endif %}
+        <div class='form-box'>
+            <h3>Register:</h3>
+            <form action="/register" method=POST>
+                {% csrf_token %}
+                <label>First Name: </label><input type="text" name='fname' placeholder="First Name"></input>
+                <label>Last Name: </label><input type="text" name='lname' placeholder="Last Name"></input>
+                <label for="age">Age:</label>
+                <input type="number" name="age" id="age" min='13' class="form-control" placeholder="13yrs and older" required>
+                <span class="validity"></span>
+                <label for="birth_date">Birthday:</label> 
+                <input type="date" name="birth_date" id=“birth_date” required>
+                <span class="validity"></span>   
+                <label>Address: </label><input type="text" name='address' placeholder="Address 1" required></input>
+                <label>Address 2: </label><input type="text" name='address2' placeholder="Address 2"></input>
+                <label>Email: </label><input type="text" name='email' placeholder="Email"></input>
+                <label>Password: </label><input type="password" name='password' placeholder="Password"></input>
+                <label>Confirm Password: </label><input type="password" name='confpw' placeholder="Password"></input>
+                <input type="submit" value='Create User'></input>
+            </form>
+        </div>
+        <div class='form-box'>
+            <h3>Login:</h3>
+            <form action="home" method=POST>
+                {% csrf_token %}
+                <label>Email: </label><input type="text" name='email' placeholder="User's Email" required></input>
+                <span class="validity"></span>
+                <label>Password: </label><input type="password" name='password' placeholder="Password" required></input>
+                <span class="validity"></span>
+                <input type="submit" value='Login'></input>
+            </form>
+        </div>
+    </div>
+</div>    
+</body>
+</html>

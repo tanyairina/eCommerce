@@ -1,0 +1,163 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="{% static 'shop/style.css' %}">
+    <title>CheckOut</title>
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                        <ul class="list-group" id="item_list">
+                        </ul>
+            </div>
+        </div>
+                <form method="POST">
+                    {% csrf_token %}
+                        <input type="hidden" id="items" name="items">
+                        <div  class="row">
+                          <div clas="col-md-12">
+                          <h3>Shipping Information:</h3>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="inputEmail4">First Name</label>
+                              <input id="fname" name="fname" type="text" class="form-control" id="" placeholder="First Name">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="inputEmail4">Last Name</label>
+                              <input id="lname" name="lname" type="text" class="form-control" id="" placeholder="Last Name">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="inputAddress">Address</label>
+                            <input id="address_ship" name="address_ship" type="text" class="form-control" id="inputAddress" placeholder="Shipping Address">
+                          </div>
+                          <div class="form-group">
+                            <label for="inputAddress">Address 2:</label>
+                            <input id="address_ship2" name="address_ship2" type="text" class="form-control" id="inputAddress" placeholder="Shipping Address">
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="inputCity">City</label>
+                              <input id="city_ship" name="city_ship" type="text" class="form-control" id="inputCity">
+                            </div>
+                            <div class="form-group col-md-4">
+                              <label for="inputState">State</label>
+                              <input id="state_ship" name="state_ship" type="text" class="form-control" id="inputCity">
+                            </div>
+                            <div class="form-group col-md-2">
+                              <label for="inputZip">Zip</label>
+                              <input id="zipcode_ship" name="zipcode_ship" type="text" class="form-control" id="inputZip">
+                            </div>  
+                          </div>
+                        </div>
+                    <div  class="row">
+                      <div clas="col-md-12">
+                        <h3>Billing Information:</h3>
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="inputEmail4">First Name</label>
+                            <input id="first_name" name="first_name" type="text" class="form-control" id="" placeholder="First Name">
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label for="inputEmail4">Last Name</label>
+                            <input id="last_name" name="last_name" type="text" class="form-control" id="" placeholder="Last Name">
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label for="inputPassword4">email</label>
+                            <input id="email" name="email" type="text" class="form-control" id="" placeholder="email adddress">
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label for="inputPassword4">telephone:</label>
+                            <input id="telephone" name="telephone" type="text" class="form-control" id="" placeholder="telephone number">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="inputAddress">Address</label>
+                          <input id="address" name="address" type="text" class="form-control" id="inputAddress" placeholder="Billing Address">
+                        </div>
+                        <div class="form-group">
+                          <label for="inputAddress">Address 2:</label>
+                          <input id="address2" name="address2" type="text" class="form-control" id="inputAddress" placeholder="Billing Address">
+                        </div>
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="inputCity">City</label>
+                            <input id="city" name="city" type="text" class="form-control" id="inputCity">
+                          </div>
+                          <div class="form-group col-md-4">
+                            <label for="inputState">State</label>
+                            <input id="state" name="state" type="text" class="form-control" id="inputCity">
+                          </div>
+                          <div class="form-group col-md-2">
+                            <label for="inputZip">Zip</label>
+                            <input id="zipcode" name="zipcode" type="text" class="form-control" id="inputZip">
+                          </div>
+                      <div class="form-group col-md-2">
+                        <label for="inputZip">Balance:</label>
+                        <input readonly="" type="text" class="form-control" id="total" name="total">
+                      </div>
+                    </div>
+                    <h4 class="mb-3">Payment</h4>
+                    <div class="row">
+                      <div class="col-md-6 mb-3">
+                        <label for="cc-number">Credit card number</label>
+                        <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                        <div class="invalid-feedback">
+                          Credit card number is required
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-3 mb-3">
+                        <label for="cc-expiration">Expiration</label>
+                        <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                        <div class="invalid-feedback">
+                          Expiration date required
+                        </div>
+                      </div>
+                      <div class="col-md-3 mb-3">
+                        <label for="cc-expiration">CVV</label>
+                        <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                        <div class="invalid-feedback">
+                          Security code required
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="mb-4">
+                    <button type="submit" class="btn btn-primary">Continue to CheckOut</button>
+                </form>
+           </div> 
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+if (localStorage.getItem('cart')==null){
+    var cart ={};
+}
+else{
+    cart = JSON.parse(localStorage.getItem('cart'));
+}
+let total = 0;
+for(item in cart){
+    let name = cart[item][1];
+    let quantity = cart[item][0];
+    let price = cart[item][2];
+    total = total + cart[item][2];
+    itemString = `<li class="list-group-item"> <span class="">${quantity}</span> of ${name} <span class="badge badge-warning badge-pill">${price}</span></li>`
+    $('#item_list').append(itemString);
+}    
+totalPrice = `<li class="list-group-item d-flex justify-content-between align-items-center"><b>Your Total:</b>${total}</li> `
+$('#total').val(total);
+$('#item_list').append(totalPrice);
+$('#items').val(JSON.stringify(cart));
+localStorage.clear()
+</script>
+</html>
