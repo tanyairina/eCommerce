@@ -16,6 +16,16 @@
 
 </head>
 <body>
+    {% if messages %}
+    <div id='errors'>
+    <ul class="alert alert-warning">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    </div>
+    {% endif %}
+    
     <div class="container">
         <h1 class="c-heading-2 x-weight-semibold ow-mb-3  no-padding ow-slide-in ow-slide-in-1 ow-theme-onedrive ow-theme-cl ow-headinghelper-1">eCommerce</h1>
         <div class="row">
@@ -31,7 +41,7 @@
                           <a class="nav-link" href="customerservice">Customer Service <span class="sr-only"></span></a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="profile">Your Account</a>
+                          <a class="nav-link" href="/profile">Your Account</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="register">Register</a>
@@ -41,6 +51,12 @@
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="emptycart">empty your cart</a>
+                        </li>
+                        <li>
+                            <a></a>
+                        </li>
+                        <li>
+                          <a class="nav-link" href="logout">Logout</a>
                         </li>
                       </ul>
                     </div>

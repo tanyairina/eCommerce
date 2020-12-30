@@ -16,16 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from ecom_app import views
+from user import views as user_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('home', views.index, name='home'),
-    path('customerservice', views.customerservice, name='customerservice'),
-    path('register', views.register, name='register'),
-    path('profile', views.profile, name='profile'),
-    path('emptycart', views.emptycart, name='emptycart'),
     path('<int:item_id>/', views.detail, name='detail'),
-    path('checkout/', views.checkout, name='checkout'),
+    path('logout', user_views.logout, name='logout'),
+    path('login', user_views.login, name='login'),
+    path('emptycart', views.emptycart, name='emptycart'),
+    path('checkout', views.checkout, name='checkout'),
+    path('customerservice', views.customerservice, name='customerservice'),
+    path('register', user_views.register, name='register'),
+    path('profile', user_views.profile, name='profile'),
+    path('profile/<int:user_id>/edit', user_views.edit, name='edit'),
     path('checkout/thankyou', views.thankyou, name='thankyou'),
 ]

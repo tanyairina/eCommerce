@@ -31,7 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'ecom_app',
+    'ecom_app.apps.EcomAppConfig',
+    'user.apps.UserConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
