@@ -19,31 +19,33 @@
                         </ul>
             </div>
         </div>
+        <br>
+        <br>
                 <form method="POST">
                     {% csrf_token %}
                         <input type="hidden" id="items" name="items">
-                        <div  class="row">
+                      <div  class="row">
                           <div clas="col-md-12">
-                          <h3>Shipping Information:</h3>
-                          <div class="form-row">
-                            <div class="form-group col-md-6">
-                              <label for="inputFirstName">First Name</label>
-                              <input id="fname" name="fname" type="text" class="form-control" id="inputFirstName" placeholder="First Name">{{user.first_name}}
+                            <h3>Shipping Information:</h3>
+                            <div class="form-row">
+                              <div class="form-group col-md-6">
+                                <label for="inputFirstName">First Name</label>
+                                <input id="fname" name="fname" type="text" class="form-control" id="inputFirstName" placeholder="First Name">{{user.first_name}}
+                              </div>
+                              <div class="form-group col-md-6">
+                                <label for="inputLastName">Last Name</label>
+                                <input id="lname" name="lname" type="text" class="form-control" id="inputLastName" placeholder="Last Name">
+                              </div>
                             </div>
-                            <div class="form-group col-md-6">
-                              <label for="inputLastName">Last Name</label>
-                              <input id="lname" name="lname" type="text" class="form-control" id="inputLastName" placeholder="Last Name">
+                            <div class="form-group">
+                              <label for="inputAddress">Address</label>
+                              <input id="address_ship" name="address_ship" type="text" class="form-control" id="inputAddress" placeholder="Shipping Address">
                             </div>
-                          </div>
-                          <div class="form-group">
-                            <label for="inputAddress">Address</label>
-                            <input id="address_ship" name="address_ship" type="text" class="form-control" id="inputAddress" placeholder="Shipping Address">
-                          </div>
-                          <div class="form-group">
-                            <label for="inputAddress2">Address 2:</label>
-                            <input id="address_ship2" name="address_ship2" type="text" class="form-control" id="inputAddress" placeholder="Shipping Address">
-                          </div>
-                          <div class="form-row">
+                            <div class="form-group">
+                              <label for="inputAddress2">Address 2:</label>
+                              <input id="address_ship2" name="address_ship2" type="text" class="form-control" id="inputAddress" placeholder="Shipping Address">
+                            </div>
+                            <div class="form-row">
                             <div class="form-group col-md-6">
                               <label for="inputCity">City</label>
                               <input id="city_ship" name="city_ship" type="text" class="form-control" id="inputCity">
@@ -57,56 +59,16 @@
                               <input id="zipcode_ship" name="zipcode_ship" type="text" class="form-control" id="inputZip">
                             </div>  
                           </div>
-                        </div>
-                    <div  class="row">
-                      <div clas="col-md-12">
-                        <h3>Billing Information:</h3>
-                        <div class="form-row">
-                          <div class="form-group col-md-6">
-                            <label for="inputEmail4">First Name</label>
-                            <input id="first_name" name="first_name" type="text" class="form-control" id="" placeholder="First Name">
-                          </div>
-                          <div class="form-group col-md-6">
-                            <label for="inputEmail4">Last Name</label>
-                            <input id="last_name" name="last_name" type="text" class="form-control" id="" placeholder="Last Name">
-                          </div>
-                          <div class="form-group col-md-6">
-                            <label for="inputPassword4">email</label>
-                            <input id="email" name="email" type="text" class="form-control" id="" placeholder="email adddress">
-                          </div>
-                          <div class="form-group col-md-6">
-                            <label for="inputPassword4">telephone:</label>
-                            <input id="telephone" name="telephone" type="text" class="form-control" id="" placeholder="telephone number">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label for="inputAddress">Address</label>
-                          <input id="address" name="address" type="text" class="form-control" id="inputAddress" placeholder="Billing Address">
-                        </div>
-                        <div class="form-group">
-                          <label for="inputAddress">Address 2:</label>
-                          <input id="address2" name="address2" type="text" class="form-control" id="inputAddress" placeholder="Billing Address">
-                        </div>
-                        <div class="form-row">
-                          <div class="form-group col-md-6">
-                            <label for="inputCity">City</label>
-                            <input id="city" name="city" type="text" class="form-control" id="inputCity">
-                          </div>
                           <div class="form-group col-md-4">
-                            <label for="inputState">State</label>
-                            <input id="state" name="state" type="text" class="form-control" id="inputCity">
+                            <label for="inputZip">Balance:</label>
+                            <input readonly="" type="text" class="form-control" id="total" name="total">
                           </div>
-                          <div class="form-group col-md-2">
-                            <label for="inputZip">Zip</label>
-                            <input id="zipcode" name="zipcode" type="text" class="form-control" id="inputZip">
-                          </div>
-                      <div class="form-group col-md-2">
-                        <label for="inputZip">Balance:</label>
-                        <input readonly="" type="text" class="form-control" id="total" name="total">
+                        </div>
                       </div>
-                    </div>
-                    <h4 class="mb-3">Payment</h4>
                     <div class="row">
+                      <div clas="col-md-12">
+                      <h4 class="mb-3">Payment</h4>
+                      <div class="row">
                       <div class="col-md-6 mb-3">
                         <label for="cc-number">Credit card number</label>
                         <input type="text" class="form-control" id="cc-number" placeholder="" required>
@@ -131,7 +93,6 @@
                         </div>
                       </div>
                     </div>
-                    <hr class="mb-4">
                     <button type="submit" class="btn btn-primary">Continue to CheckOut</button>
                 </form>
            </div> 

@@ -11,6 +11,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ('title', 'price', 'discount_price', 'category')
     search_fields = ('title', 'price', 'category')
 
-admin.site.register(Products, ProductAdmin)
+admin.site.register(Product, ProductAdmin)
 admin.site.register(Order)
+
 
